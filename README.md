@@ -1,0 +1,543 @@
+
+No 1
+
+#include <iostream>
+using namespace std;
+
+int main () {
+    int waktudetik,sisadetik,jam,menit,detik,biaya,jamtotal;
+
+    cout<<"Masukkan waktu parkir dalam detik: ";
+    cin>>waktudetik;
+
+    jamtotal=(waktudetik+3599)/3600;
+
+    jam=waktudetik/3600;
+    sisadetik=waktudetik%3600;
+    menit=sisadetik/60;
+    detik=sisadetik%60;
+
+    if (jamtotal <= 1){
+        biaya = 1000;
+    }else {
+        biaya = 1000 + (jamtotal - 1 ) * 2000; 
+    }
+
+    cout<<"Waktu parkir: "<<jam<<"jam, "<<menit<<" menit, "<<detik<<" detik.\n";
+    cout<<"Total biaya parkir: Rp "<<biaya<<endl;
+
+    return 0;
+
+}
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main () {
+    int waktudetik,sisadetik,jam,menit,detik,biaya,jamtotal;
+    string kendaraan;
+    while (true){
+    cout<<"\nJenis Kendaraan: ";
+    cin>>kendaraan;
+
+    if (kendaraan == "stop"){
+        cout<<"Program dihentikan";
+        break;
+    }
+
+    if (kendaraan == "Mobil" && kendaraan == "Motor"){
+        continue;
+    }
+    
+
+    cout<<"Masukkan waktu parkir dalam detik: ";
+    cin>>waktudetik;
+  
+    jamtotal=(waktudetik+3599)/3600;
+    jam=waktudetik/3600;
+    sisadetik=waktudetik%3600;
+    menit=sisadetik/60;
+    detik=sisadetik%60;
+    
+    if (jamtotal <= 1){
+        biaya = 1000;
+    }else if (kendaraan == "Mobil"){
+         biaya = 1000 + (jamtotal - 1 ) * 3000; 
+    }else if (kendaraan == "Motor"){
+         biaya = 1000 + (jamtotal - 1 ) * 2000;
+    }else {
+        cout<<"Ga valid";
+    }
+   
+    
+    cout<<"Waktu parkir: "<<jam<<"jam, "<<menit<<" menit, "<<detik<<" detik.\n";
+    cout<<"Total biaya parkir: Rp "<<biaya<<endl;
+}
+    return 0;
+
+}
+
+#include <iostream>
+using namespace std;
+
+int main (){
+    int N;
+    cout<<"Masukkan jumlah elemen array: ";
+    cin>>N;
+
+    int A[N];
+    cout<<"Masukkan elemen array:\n";
+    for (int i = 0;i<N;i++){
+        cin>>A[i];
+    }
+
+    bool semuasama=true;
+    for (int i=1;i<N;i++){
+        if(A[i] != A[0]){
+            semuasama=false;
+            break;
+        }
+    }
+
+    if(semuasama){
+        cout<<"Semua elemen array sama\n";
+    }else{
+        cout<<"ga sama";
+    }
+
+    return 0;
+
+}
+
+#include<iostream>
+using namespace std;
+
+int main (){
+    int m,n;
+    cout<<"Masukkan jumlah baris m: ";
+    cin>>m;
+    cout<<"Masukkan jumlah baris n: ";
+    cin>>n;
+
+    int A[m][n];
+    cout<<"Masukkan elemen matriks:\n";
+    for(int i=0;i<m;i++){
+        for(int j=0;j<n;j++){
+            cin>>A[i][j];
+        }
+    }
+
+    int maks=A[0][0];
+    int min=A[0][0];
+
+    for (int i = 0;i<m;i++){
+        for(int j=0;j<n;j++){
+            if(A[i][j] > maks) {
+                maks = A[i][j];
+            }
+            if (A[i][j] < min) {
+                min = A[i][j];
+            }
+        }
+    }
+
+    cout<<"Nilai terbesar: "<<maks<<endl;
+    cout<<"Nilai terkecil: "<<min<<endl;
+
+    int cari;
+    cout<<"Masukkan nilai yang ingin dicari: ";
+    cin>>cari;
+
+    bool ditemukan = false;
+    for (int i = 0;i<m;i++){
+        for(int j = 0;j<n;j++){
+            if (A[i][j] == cari){
+                ditemukan = true;
+                break;
+            }
+        }
+        if (ditemukan){
+            break;
+        }
+    }
+
+    if(ditemukan) {
+        cout<<"Nilai "<<cari<<" ditemukan dalam matriks\n";
+    }else{
+        cout<<"Nilai "<<cari<<"tidak ditemukan didalam matriks\n";
+    }
+    return 0;
+}
+
+#include <iostream>
+using namespace std;
+
+void jumlahgenap (int N){
+    int total=0;
+    for(int i = 0;i<N;i++){
+        total +=i*2;
+    }
+    cout<<"Jumlah "<<N<<" bilangan genap pertama = "<<total<<endl;
+
+}
+
+int main (){
+    int N;
+    cout<<"Masukkan N: ";
+    cin>>N;
+
+
+jumlahgenap(N);
+return 0;
+}
+
+#include <iostream>
+#include <iomanip> 
+using namespace std;
+
+string durasi(int jam1, int menit1, int detik1,int jam2, int menit2, int detik2) {
+
+    int total1 = jam1 * 3600 + menit1 * 60 + detik1;
+    int total2 = jam2 * 3600 + menit2 * 60 + detik2;
+
+    int selisih = total2 - total1;
+    if (selisih < 0) selisih += 24 * 3600; 
+
+    int jam = selisih / 3600;
+    int menit = (selisih % 3600) / 60;
+    int detik = selisih % 60;
+
+    char buffer[9];
+    sprintf(buffer, "%02d:%02d:%02d", jam, menit, detik);
+    return string(buffer);
+}
+
+int main() {
+    int j1, m1, d1, j2, m2, d2;
+
+    cout << "Masukkan waktu pertama (jam menit detik): ";
+    cin >> j1 >> m1 >> d1;
+    cout << "Masukkan waktu kedua (jam menit detik): ";
+    cin >> j2 >> m2 >> d2;
+
+    cout << "Durasi: " << durasi(j1, m1, d1, j2, m2, d2) << endl;
+    return 0;
+}
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Parkir {
+private:
+    int waktudetik, jam, menit, detik, biaya, jamtotal;
+    string kendaraan;
+
+public:
+    Parkir() {
+        waktudetik = jam = menit = detik = biaya = jamtotal = 0;
+        kendaraan = "";
+    }
+
+    bool inputKendaraan() {
+        cout << "\nJenis Kendaraan: ";
+        cin >> kendaraan;
+
+        if (kendaraan == "stop") {
+            cout << "Program dihentikan.\n";
+            return false; // keluar loop
+        }
+
+        if (kendaraan != "Mobil" && kendaraan != "Motor") {
+            cout << "Jenis kendaraan tidak valid! Coba lagi.\n";
+            return true;
+        }
+
+        return true; 
+    }
+
+    void inputWaktu() {
+        cout << "Masukkan waktu parkir dalam detik: ";
+        cin >> waktudetik;
+    }
+
+    void hitungBiaya() {
+        jamtotal = (waktudetik + 3599) / 3600;
+        jam = waktudetik / 3600;
+        int sisadetik = waktudetik % 3600;
+        menit = sisadetik / 60;
+        detik = sisadetik % 60;
+
+        if (jamtotal <= 1) {
+            biaya = 1000;
+        } else if (kendaraan == "Mobil") {
+            biaya = 1000 + (jamtotal - 1) * 3000;
+        } else if (kendaraan == "Motor") {
+            biaya = 1000 + (jamtotal - 1) * 2000;
+        }
+    }
+
+    void tampilkanHasil() {
+        cout << "Waktu parkir: " << jam << " jam, " << menit << " menit, " << detik << " detik.\n";
+        cout << "Total biaya parkir: Rp " << biaya << endl;
+    }
+};
+
+int main() {
+    Parkir parkir;
+
+    while (true) {
+        if (!parkir.inputKendaraan()) {
+            break; 
+        }
+        parkir.inputWaktu();
+        parkir.hitungBiaya();
+        parkir.tampilkanHasil();
+    }
+
+    return 0;
+}
+
+#include <iostream>
+#include <string>
+#include <cmath>
+#include <vector>
+using namespace std;
+
+class KonversiUmum {
+private:
+    string nama, jurusan, kelas;
+    int nim;
+    vector<string> riwayat;
+
+    const double kursUSD = 15000.0;
+    const double kursEUR = 16500.0;
+    const double kursJPY = 110.0;
+    const double kursSGD = 11000.0;
+
+public:
+    KonversiUmum(string nama, string jurusan, string kelas, int nim)
+        : nama(nama), jurusan(jurusan), kelas(kelas), nim(nim) {}
+
+    void konversiSuhu() {
+        int pilihan;
+        double c, To;
+        cout << "KONVERSI SUHU\n";
+        cout << "1. Celcius ke Fahrenheit\n";
+        cout << "2. Celcius ke Kelvin\n";
+        cout << "3. Celcius ke Reamur\n";
+        cout << "4. KELUAR\n";
+        cout << "Masukkan pilihan: ";
+        cin >> pilihan;
+
+        switch (pilihan) {
+            case 1:
+                cout << "Masukkan suhu (C): ";
+                cin >> c;
+                To = (1.8 * c) + 32;
+                cout << "Hasil: " << To << " F\n";
+                riwayat.push_back("Celcius ke Fahrenheit: " + to_string(c) + " C = " + to_string(To) + " F");
+                break;
+            case 2:
+                cout << "Masukkan suhu (C): ";
+                cin >> c;
+                To = c + 273.15;
+                cout << "Hasil: " << To << " K\n";
+                riwayat.push_back("Celcius ke Kelvin: " + to_string(c) + " C = " + to_string(To) + " K");
+                break;
+            case 3:
+                cout << "Masukkan suhu (C): ";
+                cin >> c;
+                To = 0.8 * c;
+                cout << "Hasil: " << To << " R\n";
+                riwayat.push_back("Celcius ke Reamur: " + to_string(c) + " C = " + to_string(To) + " R");
+                break;
+            case 4:
+                break;
+            default:
+                cout << "Pilihan salah.\n";
+        }
+    }
+
+    void konversiPanjang() {
+        int pilihan;
+        double p, To;
+        cout << "KONVERSI PANJANG\n";
+        cout << "1. CM ke M\n";
+        cout << "2. CM ke MM\n";
+        cout << "3. CM ke KM\n";
+        cout << "4. CM ke Inch\n";
+        cout << "5. CM ke Foot\n";
+        cout << "6. KELUAR\n";
+        cout << "Masukkan pilihan: ";
+        cin >> pilihan;
+
+        switch (pilihan) {
+            case 1:
+                cout << "Masukkan panjang (cm): ";
+                cin >> p;
+                To = p / 100;
+                cout << "Hasil: " << To << " m\n";
+                riwayat.push_back("CM ke M: " + to_string(p) + " cm = " + to_string(To) + " m");
+                break;
+            case 2:
+                cout << "Masukkan panjang (cm): ";
+                cin >> p;
+                To = p * 10;
+                cout << "Hasil: " << To << " mm\n";
+                riwayat.push_back("CM ke MM: " + to_string(p) + " cm = " + to_string(To) + " mm");
+                break;
+            case 3:
+                cout << "Masukkan panjang (cm): ";
+                cin >> p;
+                To = p / 100000;
+                cout << "Hasil: " << To << " km\n";
+                riwayat.push_back("CM ke KM: " + to_string(p) + " cm = " + to_string(To) + " km");
+                break;
+            case 4:
+                cout << "Masukkan panjang (cm): ";
+                cin >> p;
+                To = p / 2.54;
+                cout << "Hasil: " << To << " in\n";
+                riwayat.push_back("CM ke Inch: " + to_string(p) + " cm = " + to_string(To) + " in");
+                break;
+            case 5:
+                cout << "Masukkan panjang (cm): ";
+                cin >> p;
+                To = p / 30.38;
+                cout << "Hasil: " << To << " ft\n";
+                riwayat.push_back("CM ke Foot: " + to_string(p) + " cm = " + to_string(To) + " ft");
+                break;
+            case 6:
+                break;
+            default:
+                cout << "Pilihan salah.\n";
+        }
+    }
+
+    void konversiMataUang() {
+        int pilihan;
+        double r, To;
+        cout << "KONVERSI MATA UANG\n";
+        cout << "1. Rupiah ke Dollar\n";
+        cout << "2. Rupiah ke Euro\n";
+        cout << "3. Rupiah ke Yen\n";
+        cout << "4. Rupiah ke Dollar Singapura\n";
+        cout << "5. KELUAR\n";
+        cout << "Masukkan pilihan: ";
+        cin >> pilihan;
+
+        switch (pilihan) {
+            case 1:
+                cout << "Masukkan jumlah (Rp): ";
+                cin >> r;
+                To = r / kursUSD;
+                cout << "Hasil: " << To << " USD\n";
+                riwayat.push_back("Rupiah ke Dollar: " + to_string(r) + " = " + to_string(To) + " USD");
+                break;
+            case 2:
+                cout << "Masukkan jumlah (Rp): ";
+                cin >> r;
+                To = r / kursEUR;
+                cout << "Hasil: " << To << " EUR\n";
+                riwayat.push_back("Rupiah ke Euro: " + to_string(r) + " = " + to_string(To) + " EUR");
+                break;
+            case 3:
+                cout << "Masukkan jumlah (Rp): ";
+                cin >> r;
+                To = r / kursJPY;
+                cout << "Hasil: " << To << " Yen\n";
+                riwayat.push_back("Rupiah ke Yen: " + to_string(r) + " = " + to_string(To) + " Yen");
+                break;
+            case 4:
+                cout << "Masukkan jumlah (Rp): ";
+                cin >> r;
+                To = r / kursSGD;
+                cout << "Hasil: " << To << " SGD\n";
+                riwayat.push_back("Rupiah ke SGD: " + to_string(r) + " = " + to_string(To) + " SGD");
+                break;
+            case 5:
+                break;
+            default:
+                cout << "Pilihan salah.\n";
+        }
+    }
+
+    void tampilRiwayat() {
+        cout << "------------------------\n";
+        cout << "DATA KONVERSI\n";
+        cout << "Nama: " << nama << "\nNIM: " << nim << "\nJurusan: " << jurusan << "\nKelas: " << kelas << endl;
+        cout << "------------------------\n";
+        if (riwayat.empty()) {
+            cout << "Belum ada riwayat.\n";
+        } else {
+            for (size_t i = 0; i < riwayat.size(); ++i) {
+                cout << i + 1 << ". " << riwayat[i] << endl;
+            }
+        }
+    }
+
+    void hapusRiwayat() {
+        if (riwayat.empty()) {
+            cout << "Tidak ada data untuk dihapus.\n";
+            return;
+        }
+        int index;
+        cout << "Masukkan nomor yang ingin dihapus: ";
+        cin >> index;
+        if (index < 1 || index > (int)riwayat.size()) {
+            cout << "Nomor tidak valid.\n";
+        } else {
+            riwayat.erase(riwayat.begin() + index - 1);
+            cout << "Riwayat dihapus.\n";
+        }
+    }
+
+    void run() {
+        int pilihan;
+        do {
+            cout << "\nMENU KONVERSI UMUM\n";
+            cout << "1. Konversi Suhu\n";
+            cout << "2. Konversi Panjang\n";
+            cout << "3. Konversi Mata Uang\n";
+            cout << "4. Lihat Riwayat\n";
+            cout << "5. Hapus Riwayat\n";
+            cout << "6. Keluar\n";
+            cout << "Pilih: ";
+            cin >> pilihan;
+
+            switch (pilihan) {
+                case 1: konversiSuhu(); break;
+                case 2: konversiPanjang(); break;
+                case 3: konversiMataUang(); break;
+                case 4: tampilRiwayat(); break;
+                case 5: hapusRiwayat(); break;
+                case 6: cout << "Terima kasih!\n"; break;
+                default: cout << "Pilihan salah.\n";
+            }
+        } while (pilihan != 6);
+    }
+};
+
+int main() {
+    string nama, jurusan, kelas;
+    int nim;
+
+    cout << "SELAMAT DATANG DI KONVERSI UMUM\n";
+    cout << "Nama: ";
+    getline(cin, nama);
+    cout << "Jurusan: ";
+    getline(cin, jurusan);
+    cout << "NIM: ";
+    cin >> nim;
+    cout << "Kelas: ";
+    cin >> kelas;
+
+    KonversiUmum app(nama, jurusan, kelas, nim);
+    app.run();
+
+    return 0;
+}
+
+
