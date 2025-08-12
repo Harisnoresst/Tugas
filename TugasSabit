@@ -1,5 +1,4 @@
-
-No 1
+1.	Class 4th All About Conditional
 
 #include <iostream>
 using namespace std;
@@ -30,6 +29,8 @@ int main () {
 
 }
 
+2.	Class 5th Repeat Around the Loop
+   
 #include <iostream>
 #include <string>
 using namespace std;
@@ -75,7 +76,9 @@ int main () {
     cout<<"Total biaya parkir: Rp "<<biaya<<endl;
 }
     return 0;
-
+    
+3.	Class 6th Arrays
+   
 }
 
 #include <iostream>
@@ -109,7 +112,7 @@ int main (){
     return 0;
 
 }
-
+   
 #include<iostream>
 using namespace std;
 
@@ -168,7 +171,9 @@ int main (){
         cout<<"Nilai "<<cari<<"tidak ditemukan didalam matriks\n";
     }
     return 0;
-}
+} 
+
+4.	Class 7th Functions and Procedures 
 
 #include <iostream>
 using namespace std;
@@ -224,6 +229,8 @@ int main() {
     cout << "Durasi: " << durasi(j1, m1, d1, j2, m2, d2) << endl;
     return 0;
 }
+
+5.	Class 9th OOP
 
 #include <iostream>
 #include <string>
@@ -298,6 +305,8 @@ int main() {
 
     return 0;
 }
+
+6.	Tugas Akhir SABIT
 
 #include <iostream>
 #include <string>
